@@ -47,7 +47,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*$py.class
+*.py.class
 *.so
 .Python
 build/
