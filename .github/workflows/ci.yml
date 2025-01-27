@@ -78,6 +78,29 @@ jobs:
       - name: Install xmllint
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils
 
+      # Build and test Java projects
+      - name: Build and test Java libraries
+        run: |
+          cd libs/java-hello-libs
+          mvn clean verify
+          cd ../..
+
+      - name: Build and test Java applications
+        run: |
+          cd apps/java-hello
+          mvn clean verify
+          cd ../..
+
+      # Format check Java and XML files
+      - name: Check Java and XML formatting
+        run: |
+          # Check Java files
+          find . -name "*.java" -type f -exec google-java-format --dry-run --set-exit-if-changed {} \;
+          
+          # Check XML files
+          find . -name "*.xml" -type f -exec xmllint --format --output {} {} \;
+          git diff --exit-code || (echo "XML files are not properly formatted" && exit 1)
+
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
