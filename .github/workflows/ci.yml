@@ -24,6 +24,21 @@ jobs:
       # Uncomment this line to enable task distribution
       # - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
 
+      # Set up Java and Maven
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      # Install google-java-format
+      - name: Install google-java-format
+        run: |
+          curl -L https://github.com/google/google-java-format/releases/download/v1.19.2/google-java-format-1.19.2-all-deps.jar -o /usr/local/bin/google-java-format.jar
+          echo '#!/bin/bash' > /usr/local/bin/google-java-format
+          echo 'java -jar /usr/local/bin/google-java-format.jar "$@"' >> /usr/local/bin/google-java-format
+          chmod +x /usr/local/bin/google-java-format
+
       # Set up Python
       - uses: actions/setup-python@v5
         with:
@@ -58,6 +73,10 @@ jobs:
 
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
+
+      # Install xmllint
+      - name: Install xmllint
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
