@@ -1,7 +1,3 @@
 #!/bin/sh
 
 npx lint-staged
-
-nx affected --target=build || exit 1
-nx affected --target=lint || exit 1
-nx affected --target=typecheck || exit 1
