@@ -4,25 +4,23 @@ A simple Express.js application that serves a "Hello World" message with the cur
 
 ## Features
 
-- RESTful API endpoint at `/api/hello`
-- Returns JSON response with a greeting message and current timestamp
-- Built with TypeScript and Express.js
-- Includes unit tests
+- Express.js-based REST API
+- Type-safe with TypeScript
+- Fully tested with Vitest
+- Automatic code formatting with Prettier
+- Hot reload development server
 
-## Getting Started
+## Setup
 
-### Prerequisites
+1. Make sure you have Node.js 20+ installed
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- Node.js
-- npm or yarn
+## Development
 
-### Installation
-
-```bash
-npm install
-```
-
-### Development
+### Run Development Server
 
 To start the development server:
 
@@ -40,9 +38,25 @@ Run the tests with:
 npm test
 ```
 
-## API Reference
+### Code Formatting
 
-### GET /api/hello
+Format code:
+
+```bash
+npm run format
+```
+
+### Type Checking
+
+Run type checking:
+
+```bash
+npm run typecheck
+```
+
+## API Endpoints
+
+### GET `/api/hello`
 
 Returns a JSON object containing a hello message with the current date and time.
 
@@ -50,7 +64,7 @@ Returns a JSON object containing a hello message with the current date and time.
 
 ```json
 {
-  "message": "hello world: 2025-01-27T13:24:17+07:00"
+  "message": "Hello World: 2025-01-27 14:19:45"
 }
 ```
 
