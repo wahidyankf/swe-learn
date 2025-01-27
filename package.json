@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install"
+    "affected:graph": "nx affected:graph",
+    "build:affected": "nx affected --target=build",
+    "lint:affected": "nx affected --target=lint",
+    "prepare": "husky install && chmod ug+x .husky/*",
+    "test:affected:parallel": "nx affected --target=test --parallel",
+    "test:affected": "nx affected --target=test",
+    "typecheck:affected": "nx affected --target=typecheck"
   },
   "private": true,
   "devDependencies": {

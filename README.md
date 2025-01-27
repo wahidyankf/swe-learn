@@ -50,6 +50,39 @@ npx nx graph
 
 ## Development
 
+### Available Scripts
+
+```sh
+# Install dependencies
+npm install
+
+# Test affected projects
+npm run test:affected         # Run tests for affected projects
+npm run test:affected:parallel # Run tests in parallel (faster)
+
+# Build affected projects
+npm run build:affected
+
+# Lint and type check
+npm run lint:affected        # Lint affected projects
+npm run typecheck:affected   # Type check affected projects
+
+# Visualize affected projects
+npm run affected:graph       # Show dependency graph of affected projects
+```
+
+### Development Workflow
+
+1. Install dependencies: `npm install`
+2. Make your changes
+3. Before committing:
+   - Run `npm run affected:graph` to see which projects are affected
+   - Run `npm run test:affected:parallel` to test affected projects
+   - Run `npm run typecheck:affected` to check types
+   - Git hooks will automatically:
+     - Format your code using Prettier
+     - Validate your commit message (see Commit Convention below)
+
 ### Commit Convention
 
 This repository follows the [Conventional Commits](https://www.conventionalcommits.org/) specification. Commit messages must follow this pattern:
