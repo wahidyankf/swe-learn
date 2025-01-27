@@ -38,6 +38,7 @@ jobs:
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install java 21.0.2-tem
           sdk use java 21.0.2-tem
+          java -version  # Verify Java installation
         shell: bash
 
       - name: Install Maven
@@ -45,6 +46,14 @@ jobs:
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install maven 3.9.9
           sdk use maven 3.9.9
+          mvn -version  # Verify Maven installation
+        shell: bash
+
+      # Set up environment variables for subsequent steps
+      - name: Set up environment
+        run: |
+          echo "SDKMAN_DIR=$HOME/.sdkman" >> $GITHUB_ENV
+          echo 'source "$SDKMAN_DIR/bin/sdkman-init.sh"' >> $GITHUB_ENV
         shell: bash
 
       # Set up Java cache
@@ -113,11 +122,11 @@ jobs:
           git diff --exit-code
 
       # Build and test Java projects
-      - name: Build and test Java libraries
+      - name: Build and install Java libraries
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           cd libs/java-hello-libs
-          mvn clean verify
+          mvn clean install
           cd ../..
 
       - name: Build and test Java applications
