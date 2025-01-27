@@ -13,7 +13,11 @@
     "affected:graph": "nx affected:graph",
     "node-hello:build": "tsc -p apps/node-hello/tsconfig.json",
     "node-hello:dev": "tsx watch apps/node-hello/src/main.ts",
-    "node-hello:start": "node dist/apps/node-hello/main.js"
+    "node-hello:start": "node dist/apps/node-hello/main.js",
+    "python-hello:install": "nx run python-hello:install",
+    "python-hello:dev": "nx run python-hello:serve",
+    "python-hello-libs:install": "nx run python-hello-libs:install",
+    "python-hello-libs:build": "nx run python-hello-libs:build"
   },
   "private": true,
   "dependencies": {

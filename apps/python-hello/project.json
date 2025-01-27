@@ -1,0 +1,47 @@
+{
+  "name": "python-hello",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/python-hello/src",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["poetry lock", "poetry install"],
+        "cwd": "apps/python-hello",
+        "parallel": false
+      },
+      "dependsOn": [
+        {
+          "target": "install",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run uvicorn src.main:app --reload --port 3000",
+        "cwd": "apps/python-hello"
+      },
+      "dependsOn": ["install"]
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run pytest",
+        "cwd": "apps/python-hello"
+      },
+      "dependsOn": ["install"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry build",
+        "cwd": "apps/python-hello"
+      },
+      "dependsOn": ["install"]
+    }
+  },
+  "tags": ["python", "application"]
+}

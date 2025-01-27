@@ -1,0 +1,33 @@
+{
+  "name": "python-hello-libs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/python-hello-libs/python_hello_libs",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["poetry lock", "poetry install"],
+        "cwd": "libs/python-hello-libs",
+        "parallel": false
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run pytest",
+        "cwd": "libs/python-hello-libs"
+      },
+      "dependsOn": ["install"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry build",
+        "cwd": "libs/python-hello-libs"
+      },
+      "dependsOn": ["install"]
+    }
+  },
+  "tags": ["python", "library"]
+}
