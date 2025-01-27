@@ -1,0 +1,47 @@
+{
+  "name": "go-hello-libs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/go-hello-libs",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go mod tidy",
+        "cwd": "libs/go-hello-libs"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go test ./...",
+        "cwd": "libs/go-hello-libs"
+      },
+      "dependsOn": ["install"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go build ./...",
+        "cwd": "libs/go-hello-libs"
+      },
+      "dependsOn": ["install"]
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go fmt ./...",
+        "cwd": "libs/go-hello-libs"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go vet ./...",
+        "cwd": "libs/go-hello-libs"
+      },
+      "dependsOn": ["install"]
+    }
+  },
+  "tags": ["go", "library"]
+}

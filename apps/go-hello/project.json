@@ -1,0 +1,61 @@
+{
+  "name": "go-hello",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/go-hello",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go mod tidy",
+        "cwd": "apps/go-hello"
+      },
+      "dependsOn": [
+        {
+          "target": "install",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go run main.go",
+        "cwd": "apps/go-hello"
+      },
+      "dependsOn": ["install"]
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go test ./...",
+        "cwd": "apps/go-hello"
+      },
+      "dependsOn": ["install"]
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go build -o dist/go-hello",
+        "cwd": "apps/go-hello"
+      },
+      "dependsOn": ["install"]
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go fmt ./...",
+        "cwd": "apps/go-hello"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go vet ./...",
+        "cwd": "apps/go-hello"
+      },
+      "dependsOn": ["install"]
+    }
+  },
+  "tags": ["go", "application"]
+}

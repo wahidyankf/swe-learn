@@ -18,7 +18,17 @@
     "python-hello:dev": "nx run python-hello:serve",
     "python-hello-libs:install": "nx run python-hello-libs:install",
     "python-hello-libs:build": "nx run python-hello-libs:build",
-    "format:python": "nx run-many --target=format --projects=python-hello,python-hello-libs"
+    "format:python": "nx run-many --target=format --projects=python-hello,python-hello-libs",
+    "go-hello:install": "nx run go-hello:install",
+    "go-hello:dev": "nx run go-hello:serve",
+    "go-hello:build": "nx run go-hello:build",
+    "go-hello:test": "nx run go-hello:test",
+    "go-hello:lint": "nx run go-hello:lint",
+    "go-hello-libs:install": "nx run go-hello-libs:install",
+    "go-hello-libs:build": "nx run go-hello-libs:build",
+    "go-hello-libs:test": "nx run go-hello-libs:test",
+    "go-hello-libs:lint": "nx run go-hello-libs:lint",
+    "format:go": "nx run-many --target=format --projects=go-hello,go-hello-libs"
   },
   "private": true,
   "dependencies": {
