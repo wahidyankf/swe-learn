@@ -22,8 +22,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Install SDKMAN and Java/Maven
-      - name: Install SDKMAN and Java/Maven
+      # Install SDKMAN
+      - name: Install SDKMAN
         run: |
           curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -31,6 +31,12 @@ jobs:
           sdk env install
         env:
           SDKMAN_DIR: $HOME/.sdkman
+
+      - name: Install Java
+        run: |
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install java 21.0.2-tem
+          sdk use java 21.0.2-tem
 
       # Set up Java cache
       - uses: actions/cache@v4
