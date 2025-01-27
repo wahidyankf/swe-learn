@@ -7,5 +7,8 @@ nx run-many --target=format --projects=python-hello,python-hello-libs
 cd libs/go-hello-libs && go fmt ./... && cd ../../
 cd apps/go-hello && go fmt ./... && cd ../../
 
+# Format Java and XML files
+./scripts/format-java.sh
+
 # Run lint-staged
 npx lint-staged

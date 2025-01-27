@@ -1,3 +1,4 @@
 {
-  "*.{js,jsx,ts,tsx,md,html,css,json}": ["prettier --write"]
+  "*.{js,jsx,ts,tsx,md,html,css,json}": ["prettier --write"],
+  "*.{java,xml}": ["./scripts/format-java.sh"]
 }
