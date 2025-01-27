@@ -9,15 +9,28 @@
       "options": {
         "command": "mvn clean package",
         "cwd": "apps/java-hello"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "java-hello-libs"
+        }
+      ]
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
         "command": "mvn test",
         "cwd": "apps/java-hello"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "java-hello-libs"
+        }
+      ]
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["java-hello-libs"]
 }

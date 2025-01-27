@@ -8,44 +8,66 @@ This repository is used to learn software engineering concepts and create proof 
 
 This repository follows the conventional NX monorepo structure:
 
-- `apps/`: Contains all applications
-- `libs/`: Contains shared libraries, components, and utilities
+### Apps
+
+- `apps/go-hello/`: Go application example
+- `apps/java-hello/`: Java application example
+- `apps/node-hello/`: Node.js application example
+- `apps/python-hello/`: Python application example
+
+### Libraries
+
+- `libs/go-hello-libs/`: Go library example
+- `libs/java-hello-libs/`: Java library example
+- `libs/node-hello-libs/`: Node.js library example
+- `libs/python-hello-libs/`: Python library example
 
 ## Prerequisites
 
 - Node.js (Latest LTS version recommended)
 - npm or yarn
+- Go (1.21 or later)
+- Java (JDK 21)
+- Python (3.12 or later)
+- Poetry (for Python package management)
+- Maven (for Java builds)
 
-## How to Run
+## Getting Started
 
-1. Install dependencies:
+1. Clone the repository:
 
 ```sh
+git clone https://github.com/wahidyankf/swe-learn.git
+cd swe-learn
+```
+
+2. Install dependencies:
+
+```sh
+# Install Node.js dependencies
 npm install
+
+# Install Python dependencies
+cd apps/python-hello && poetry install && cd ../..
+cd libs/python-hello-libs && poetry install && cd ../..
+
+# Install Java dependencies (Maven will handle this automatically during build)
 ```
 
-2. Run a specific project:
+3. Run a specific project:
 
 ```sh
-npx nx serve <project-name>
-```
+# Node.js
+npx nx serve node-hello
 
-3. Build a specific project:
+# Python
+npx nx serve python-hello
 
-```sh
-npx nx build <project-name>
-```
+# Java
+npx nx serve java-hello
 
-4. Run tests:
-
-```sh
-npx nx test <project-name>
-```
-
-5. View the project graph:
-
-```sh
-npx nx graph
+# Go
+npx nx serve go-hello
 ```
 
 ## Development
@@ -80,8 +102,22 @@ npm run affected:graph       # Show dependency graph of affected projects
    - Run `npm run test:affected:parallel` to test affected projects
    - Run `npm run typecheck:affected` to check types
    - Git hooks will automatically:
-     - Format your code using Prettier
+     - Format your code using Prettier (JavaScript/TypeScript)
+     - Format Python code (when Python files are staged)
+     - Format Go code
+     - Format Java code
      - Validate your commit message (see Commit Convention below)
+
+### Code Formatting
+
+The project uses various formatters for different languages:
+
+- JavaScript/TypeScript: Prettier
+- Python: Black
+- Go: `go fmt`
+- Java: `google-java-format`
+
+These are automatically run via pre-commit hooks when you stage files.
 
 ### Commit Convention
 
@@ -112,6 +148,16 @@ feat(auth): add login functionality
 fix(api): handle null response from server
 docs(readme): update installation instructions
 ```
+
+## CI/CD
+
+The project uses GitHub Actions for continuous integration. The CI pipeline:
+
+1. Runs on every push and pull request
+2. Tests all affected projects
+3. Builds all affected projects
+4. Runs linting and type checking
+5. Ensures code formatting is consistent
 
 ## License
 
