@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-# Format Python files
-nx run-many --target=format --projects=python-hello,python-hello-libs
+# Format Python files (only if Python files are in staging)
+./scripts/format-python.sh
 
 # Format Go files
 cd libs/go-hello-libs && go fmt ./... && cd ../../
