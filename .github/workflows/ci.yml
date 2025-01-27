@@ -43,8 +43,8 @@ jobs:
       - name: Install Maven
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          sdk install maven
-          sdk use maven
+          sdk install maven 3.9.9
+          sdk use maven 3.9.9
         shell: bash
 
       # Set up Java cache
