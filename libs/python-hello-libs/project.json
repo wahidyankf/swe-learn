@@ -27,6 +27,14 @@
         "cwd": "libs/python-hello-libs"
       },
       "dependsOn": ["install"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run pyright",
+        "cwd": "libs/python-hello-libs"
+      },
+      "dependsOn": ["install"]
     }
   },
   "tags": ["python", "library"]

@@ -41,6 +41,14 @@
         "cwd": "apps/python-hello"
       },
       "dependsOn": ["install"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run pyright",
+        "cwd": "apps/python-hello"
+      },
+      "dependsOn": ["install"]
     }
   },
   "tags": ["python", "application"]
