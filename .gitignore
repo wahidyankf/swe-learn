@@ -44,7 +44,9 @@ Thumbs.db
 # Python
 __pycache__/
 .pytest_cache
-*.py[cod]
+*.pyc
+*.pyo
+*.pyd
 *$py.class
 *.so
 .Python
