@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./apps/node-hello"
+    },
+    {
+      "path": "./libs/node-hello-libs"
     }
   ]
 }

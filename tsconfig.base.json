@@ -5,7 +5,6 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
     "emitDecoratorMetadata": false,
     "esModuleInterop": true,
     "experimentalDecorators": false,
@@ -26,9 +25,13 @@
     "resolveJsonModule": false,
     "skipDefaultLibCheck": false,
     "skipLibCheck": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "target": "es2022",
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "paths": {
+      "@swe-learn/node-hello-libs": ["./libs/node-hello-libs/src/index.ts"]
+    },
+    "baseUrl": "."
   }
 }

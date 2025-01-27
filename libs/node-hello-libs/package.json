@@ -1,0 +1,8 @@
+{
+  "name": "@swe-learn/node-hello-libs",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "module": "./src/index.js"
+}

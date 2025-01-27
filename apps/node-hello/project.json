@@ -8,7 +8,13 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "npm run node-hello:build"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ]
     },
     "serve": {
       "executor": "nx:run-commands",
@@ -21,7 +27,21 @@
       "options": {
         "command": "npm run node-hello:start"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/node-hello/**/*.ts"]
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/node-hello/tsconfig.json --noEmit"
+      }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["node-hello-libs"]
 }

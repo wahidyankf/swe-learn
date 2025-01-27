@@ -1,0 +1,33 @@
+{
+  "name": "node-hello-libs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/node-hello-libs/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/node-hello-libs",
+        "main": "libs/node-hello-libs/src/index.ts",
+        "tsConfig": "libs/node-hello-libs/tsconfig.json",
+        "assets": ["libs/node-hello-libs/*.md"],
+        "buildableProjectDepsInPackageJsonType": "dependencies"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/node-hello-libs/**/*.ts"]
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/node-hello-libs/tsconfig.json --noEmit"
+      }
+    }
+  },
+  "tags": []
+}
