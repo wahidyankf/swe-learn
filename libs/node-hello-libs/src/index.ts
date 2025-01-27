@@ -1,4 +1,7 @@
 export function getCurrentDateTime(): string {
-  const now = new Date();
-  return now.toLocaleString();
+  return new Date().toLocaleString();
+}
+
+export function formatDate(date: Date): string {
+  return date.toISOString();
 }
