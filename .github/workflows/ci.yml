@@ -26,17 +26,19 @@ jobs:
       - name: Install SDKMAN
         run: |
           curl -s "https://get.sdkman.io" | bash
+          mkdir -p "$HOME/.sdkman/etc"
+          touch "$HOME/.sdkman/etc/config"
+          echo "sdkman_auto_answer=true" >> "$HOME/.sdkman/etc/config"
+          echo "sdkman_auto_selfupdate=false" >> "$HOME/.sdkman/etc/config"
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          echo 'source "$HOME/.sdkman/bin/sdkman-init.sh"' >> ~/.bashrc
-          sdk env install
-        env:
-          SDKMAN_DIR: $HOME/.sdkman
+        shell: bash
 
       - name: Install Java
         run: |
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install java 21.0.2-tem
           sdk use java 21.0.2-tem
+        shell: bash
 
       # Set up Java cache
       - uses: actions/cache@v4
