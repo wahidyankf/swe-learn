@@ -3,26 +3,36 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "affected:graph": "nx affected:graph",
+    "prepare": "husky install && chmod ug+x .husky/*",
+    "test:affected": "nx affected --target=test",
+    "test:affected:parallel": "nx affected --target=test --parallel",
     "build:affected": "nx affected --target=build",
     "lint:affected": "nx affected --target=lint",
-    "prepare": "husky install && chmod ug+x .husky/*",
-    "test:affected:parallel": "nx affected --target=test --parallel",
-    "test:affected": "nx affected --target=test",
-    "typecheck:affected": "nx affected --target=typecheck"
+    "typecheck:affected": "nx affected --target=typecheck",
+    "affected:graph": "nx affected:graph",
+    "node-hello:build": "tsc -p apps/node-hello/tsconfig.json",
+    "node-hello:dev": "ts-node-dev --respawn apps/node-hello/src/main.ts",
+    "node-hello:start": "node dist/apps/node-hello/main.js"
   },
   "private": true,
+  "dependencies": {
+    "express": "^4.18.2"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@nx/js": "20.3.3",
+    "@nx/node": "^20.3.3",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.16",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "nx": "20.3.3",
     "prettier": "^2.8.8",
+    "ts-node-dev": "^2.0.0",
     "tslib": "^2.3.0",
     "typescript": "~5.6.2"
   },
