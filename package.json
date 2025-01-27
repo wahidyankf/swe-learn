@@ -54,17 +54,8 @@
     "*.{js,jsx,ts,tsx}": [
       "prettier --write"
     ],
-    "apps/python-hello/src/**/*.py": [
-      "cd apps/python-hello && poetry run black"
-    ],
-    "apps/python-hello/tests/**/*.py": [
-      "cd apps/python-hello && poetry run black"
-    ],
-    "libs/python-hello-libs/python_hello_libs/**/*.py": [
-      "cd libs/python-hello-libs && poetry run black"
-    ],
-    "libs/python-hello-libs/tests/**/*.py": [
-      "cd libs/python-hello-libs && poetry run black"
+    "*.py": [
+      "npm run format:python"
     ]
   },
   "workspaces": [
