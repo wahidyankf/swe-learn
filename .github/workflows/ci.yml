@@ -2,13 +2,17 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
 
 permissions:
   actions: read
   contents: read
+
+defaults:
+  run:
+    shell: bash -l {0}
 
 jobs:
   main:
@@ -23,10 +27,9 @@ jobs:
         run: |
           curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
-          echo "$HOME/.sdkman/bin/sdkman-init.sh" >> $GITHUB_ENV
           sdk env install
-          echo "$HOME/.sdkman/candidates/java/current/bin" >> $GITHUB_PATH
-          echo "$HOME/.sdkman/candidates/maven/current/bin" >> $GITHUB_PATH
+          echo "SDKMAN_DIR=$HOME/.sdkman" >> $GITHUB_ENV
+          echo "PATH=$HOME/.sdkman/candidates/java/current/bin:$HOME/.sdkman/candidates/maven/current/bin:$PATH" >> $GITHUB_ENV
 
       # Set up Java cache
       - uses: actions/cache@v4
