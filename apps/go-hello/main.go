@@ -11,7 +11,7 @@ type HelloResponse struct {
 }
 
 // This is an unformatted comment to test pre-commit hook
-func     main(   ) {
+func main() {
 	r := gin.Default()
 
 	r.GET("/api/hello", func(c *gin.Context) {

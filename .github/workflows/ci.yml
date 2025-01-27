@@ -44,6 +44,12 @@ jobs:
           go-version: '1.21'
           cache: true
 
+      # Install Go dependencies
+      - name: Install Go dependencies
+        run: |
+          cd libs/go-hello-libs && go mod tidy
+          cd ../../apps/go-hello && go mod tidy
+
       # Cache node_modules
       - uses: actions/setup-node@v4
         with:

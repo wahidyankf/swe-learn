@@ -53,11 +53,12 @@
     "format": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "poetry run black .",
+        "command": "poetry run black src",
         "cwd": "apps/python-hello"
       },
       "dependsOn": ["install"]
     }
   },
-  "tags": ["python", "application"]
+  "tags": ["python", "application"],
+  "implicitDependencies": ["python-hello-libs"]
 }

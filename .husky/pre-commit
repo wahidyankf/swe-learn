@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
 # Format Python files
-./scripts/format-python.sh
+nx run-many --target=format --projects=python-hello,python-hello-libs
 
 # Format Go files
-./scripts/format-go.sh
+cd libs/go-hello-libs && go fmt ./... && cd ../../
+cd apps/go-hello && go fmt ./... && cd ../../
 
 # Run lint-staged
 npx lint-staged

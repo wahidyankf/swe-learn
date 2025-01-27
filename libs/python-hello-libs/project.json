@@ -39,7 +39,7 @@
     "format": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "poetry run black .",
+        "command": "poetry run black python_hello_libs",
         "cwd": "libs/python-hello-libs"
       },
       "dependsOn": ["install"]

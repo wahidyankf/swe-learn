@@ -28,7 +28,15 @@
     "go-hello-libs:build": "nx run go-hello-libs:build",
     "go-hello-libs:test": "nx run go-hello-libs:test",
     "go-hello-libs:lint": "nx run go-hello-libs:lint",
-    "format:go": "nx run-many --target=format --projects=go-hello,go-hello-libs"
+    "format:go": "nx run-many --target=format --projects=go-hello,go-hello-libs",
+    "test:go": "nx run-many --target=test --projects=go-hello,go-hello-libs",
+    "lint:go": "nx run-many --target=lint --projects=go-hello,go-hello-libs",
+    "build:all": "nx run-many --target=build --all",
+    "test:all": "nx run-many --target=test --all",
+    "lint:all": "nx run-many --target=lint --all",
+    "typecheck:all": "nx run-many --target=typecheck --all",
+    "format:all": "nx run-many --target=format --all",
+    "check:all": "npm run build:all && npm run test:all && npm run lint:all && npm run typecheck:all"
   },
   "private": true,
   "dependencies": {
@@ -61,8 +69,14 @@
     "vitest": "^3.0.4"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,jsx,ts,tsx,md,html,css,json,yaml,yml}": [
       "prettier --write"
+    ],
+    "apps/go-hello/**/*.go": [
+      "cd apps/go-hello && go fmt"
+    ],
+    "libs/go-hello-libs/**/*.go": [
+      "cd libs/go-hello-libs && go fmt"
     ]
   },
   "workspaces": [
