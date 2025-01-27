@@ -54,8 +54,11 @@
     "*.{js,jsx,ts,tsx}": [
       "prettier --write"
     ],
-    "*.py": [
-      "npm run format:python"
+    "apps/python-hello/src/**/*.py": [
+      "nx run python-hello:format"
+    ],
+    "libs/python-hello-libs/python_hello_libs/**/*.py": [
+      "nx run python-hello-libs:format"
     ]
   },
   "workspaces": [
