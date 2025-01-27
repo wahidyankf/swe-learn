@@ -12,6 +12,7 @@ public class App {
 
     // Use with different names
     String[] names = {"Alice", "Bob", "Charlie"};
+
     for (String name : names) {
       System.out.println(greeter.sayHello(name));
     }
