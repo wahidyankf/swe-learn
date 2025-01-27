@@ -72,5 +72,4 @@ venv.bak/
 .python-version
 
 # Poetry
-poetry.lock
 dist/
