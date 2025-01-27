@@ -3,6 +3,7 @@ from src.main import app
 
 client = TestClient(app)
 
+
 def test_hello_endpoint():
     response = client.get("/api/hello")
     assert response.status_code == 200

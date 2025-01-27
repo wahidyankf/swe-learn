@@ -4,6 +4,7 @@ from typing import Dict
 
 app=FastAPI()
 
+
 @app.get("/api/hello")
 async def hello() -> Dict[str, str]:
     """Hello world endpoint that returns current date and time.
