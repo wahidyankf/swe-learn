@@ -48,6 +48,38 @@ npx nx test <project-name>
 npx nx graph
 ```
 
+## Development
+
+### Commit Convention
+
+This repository follows the [Conventional Commits](https://www.conventionalcommits.org/) specification. Commit messages must follow this pattern:
+
+```
+type(scope): subject
+
+body
+```
+
+Types:
+
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code changes that neither fix a bug nor add a feature
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Changes to build process or auxiliary tools
+- `ci`: Changes to CI configuration files and scripts
+
+Examples:
+
+```
+feat(auth): add login functionality
+fix(api): handle null response from server
+docs(readme): update installation instructions
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
