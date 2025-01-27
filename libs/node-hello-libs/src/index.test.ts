@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getCurrentDateTime, formatDate } from './index';
+import { getCurrentDateTime, formatDate } from './index.js';
 
 describe('getCurrentDateTime', () => {
   it('should return a string', () => {
