@@ -17,7 +17,8 @@
     "python-hello:install": "nx run python-hello:install",
     "python-hello:dev": "nx run python-hello:serve",
     "python-hello-libs:install": "nx run python-hello-libs:install",
-    "python-hello-libs:build": "nx run python-hello-libs:build"
+    "python-hello-libs:build": "nx run python-hello-libs:build",
+    "format:python": "nx run-many --target=format --projects=python-hello,python-hello-libs"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +49,14 @@
     "tsx": "^4.19.2",
     "typescript": "~5.6.2",
     "vitest": "^3.0.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.py": [
+      "npm run format:python"
+    ]
   },
   "workspaces": [
     "packages/*"

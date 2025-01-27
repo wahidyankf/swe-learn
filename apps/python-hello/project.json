@@ -49,6 +49,14 @@
         "cwd": "apps/python-hello"
       },
       "dependsOn": ["install"]
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run black .",
+        "cwd": "apps/python-hello"
+      },
+      "dependsOn": ["install"]
     }
   },
   "tags": ["python", "application"]

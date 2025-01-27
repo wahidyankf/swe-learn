@@ -35,6 +35,14 @@
         "cwd": "libs/python-hello-libs"
       },
       "dependsOn": ["install"]
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "poetry run black .",
+        "cwd": "libs/python-hello-libs"
+      },
+      "dependsOn": ["install"]
     }
   },
   "tags": ["python", "library"]
