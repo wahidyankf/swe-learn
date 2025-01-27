@@ -79,16 +79,36 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils
 
       # Build and test Java projects
+      - name: Setup Maven Wrapper for Java libraries
+        run: |
+          cd libs/java-hello-libs
+          mvn -N io.takari:maven:wrapper
+          cd ../..
+
+      - name: Setup Maven Wrapper for Java applications  
+        run: |
+          cd apps/java-hello
+          mvn -N io.takari:maven:wrapper
+          cd ../..
+
+      - name: Validate Maven projects
+        run: |
+          cd libs/java-hello-libs
+          ./mvnw validate
+          cd ../../apps/java-hello
+          ./mvnw validate
+          cd ../..
+
       - name: Build and test Java libraries
         run: |
           cd libs/java-hello-libs
-          mvn clean verify
+          ./mvnw clean verify
           cd ../..
 
       - name: Build and test Java applications
         run: |
           cd apps/java-hello
-          mvn clean verify
+          ./mvnw clean verify
           cd ../..
 
       # Format check Java and XML files
