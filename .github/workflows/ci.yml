@@ -24,6 +24,20 @@ jobs:
       # Uncomment this line to enable task distribution
       # - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
 
+      # Set up Python
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      # Install Poetry
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.7.1
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
       # Cache node_modules
       - uses: actions/setup-node@v4
         with:
