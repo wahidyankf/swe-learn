@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 permissions:
   actions: read
@@ -116,5 +116,5 @@ jobs:
       # - run: npx nx-cloud record -- echo Hello World
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       - run: |
-        source "$HOME/.sdkman/bin/sdkman-init.sh"
-        npx nx affected -t lint test build typecheck
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          npx nx affected -t lint test build typecheck
