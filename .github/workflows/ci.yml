@@ -107,12 +107,18 @@ jobs:
         with:
           ocaml-compiler: 4.14.x
           dune-cache: true
+          opam-depext-flags: --with-test
 
-      # Install OCaml dependencies
-      - name: Install OCaml dependencies
+      # Install base OCaml dependencies
+      - name: Install base OCaml dependencies
         run: |
-          opam install . --deps-only --with-test
-          opam install dune dream yojson re alcotest
+          opam install dune dream yojson re alcotest --yes
+
+      # Install project OCaml dependencies
+      - name: Install project OCaml dependencies
+        run: |
+          cd libs/ocaml-hello-libs && opam install . --deps-only --with-test --yes
+          cd ../../apps/ocaml-hello && opam install . --deps-only --with-test --yes
 
       # Format check OCaml files
       - name: Check OCaml formatting
