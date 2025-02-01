@@ -106,7 +106,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y bubblewrap gcc make g++ rsync git m4 unzip pkg-config
-          sudo apt-get install -y musl-tools mercurial
+          sudo apt-get install -y musl-tools mercurial libev-dev
 
       # Download and install OPAM
       - name: Download and install OPAM
@@ -125,13 +125,13 @@ jobs:
       # Install base OCaml dependencies
       - name: Install base OCaml dependencies
         run: |
-          opam install dune dream yojson re alcotest --yes
+          opam install dune dream yojson re alcotest --yes --assume-depexts
 
       # Install project OCaml dependencies
       - name: Install project OCaml dependencies
         run: |
-          cd libs/ocaml-hello-libs && opam install . --deps-only --with-test --yes
-          cd ../../apps/ocaml-hello && opam install . --deps-only --with-test --yes
+          cd libs/ocaml-hello-libs && opam install . --deps-only --with-test --yes --assume-depexts
+          cd ../../apps/ocaml-hello && opam install . --deps-only --with-test --yes --assume-depexts
 
       # Format check OCaml files
       - name: Check OCaml formatting
