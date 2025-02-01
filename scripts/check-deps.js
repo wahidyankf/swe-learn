@@ -136,10 +136,10 @@ if (isLinux) {
     'git',
     'm4',
     'unzip',
-    'pkg-config',
+    'pkg-config:amd64',
     'musl-tools',
     'mercurial',
-    'libev-dev',
+    'libev-dev:amd64',
   ];
 
   for (const pkg of requiredPackages) {
