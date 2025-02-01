@@ -13,6 +13,7 @@ This repository follows the conventional NX monorepo structure:
 - `apps/go-hello/`: Go application example
 - `apps/java-hello/`: Java application example
 - `apps/node-hello/`: Node.js application example
+- `apps/ocaml-hello/`: OCaml application example
 - `apps/python-hello/`: Python application example
 
 ### Libraries
@@ -20,6 +21,7 @@ This repository follows the conventional NX monorepo structure:
 - `libs/go-hello-libs/`: Go library example
 - `libs/java-hello-libs/`: Java library example
 - `libs/node-hello-libs/`: Node.js library example
+- `libs/ocaml-hello-libs/`: OCaml library example
 - `libs/python-hello-libs/`: Python library example
 
 ## Prerequisites
@@ -28,9 +30,11 @@ This repository follows the conventional NX monorepo structure:
 - npm or yarn
 - Go (1.21 or later)
 - Java (JDK 21)
+- OCaml (4.14.x)
 - Python (3.12 or later)
 - Poetry (for Python package management)
 - Maven (for Java builds)
+- OPAM (for OCaml package management)
 
 ## Getting Started
 
@@ -51,6 +55,10 @@ npm install
 cd apps/python-hello && poetry install && cd ../..
 cd libs/python-hello-libs && poetry install && cd ../..
 
+# Install OCaml dependencies
+opam install . --deps-only --with-test
+opam install dune dream yojson re alcotest
+
 # Install Java dependencies (Maven will handle this automatically during build)
 ```
 
@@ -68,6 +76,9 @@ npx nx serve java-hello
 
 # Go
 npx nx serve go-hello
+
+# OCaml
+npx nx serve ocaml-hello
 ```
 
 ## Development
@@ -91,6 +102,13 @@ npm run typecheck:affected   # Type check affected projects
 
 # Visualize affected projects
 npm run affected:graph       # Show dependency graph of affected projects
+
+# OCaml specific commands
+npm run apps:ocaml-hello:build    # Build OCaml application
+npm run apps:ocaml-hello:test     # Test OCaml application
+npm run apps:ocaml-hello:dev      # Run OCaml application in development mode
+npm run libs:ocaml-hello-libs:build # Build OCaml library
+npm run libs:ocaml-hello-libs:test  # Test OCaml library
 ```
 
 ### Development Workflow
@@ -106,6 +124,7 @@ npm run affected:graph       # Show dependency graph of affected projects
      - Format Python code (when Python files are staged)
      - Format Go code
      - Format Java code
+     - Format OCaml code
      - Validate your commit message (see Commit Convention below)
 
 ### Code Formatting
@@ -116,6 +135,7 @@ The project uses various formatters for different languages:
 - Python: Black
 - Go: `go fmt`
 - Java: `google-java-format`
+- OCaml: `ocamlformat`
 
 These are automatically run via pre-commit hooks when you stage files.
 
