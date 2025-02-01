@@ -27,6 +27,7 @@ This repository follows the conventional NX monorepo structure:
 ## Prerequisites
 
 - Node.js (Latest LTS version recommended)
+  - It is recommended to use [Volta](https://volta.sh) for Node.js version management
 - npm or yarn
 - Go (1.21 or later)
 - Java (JDK 21)
