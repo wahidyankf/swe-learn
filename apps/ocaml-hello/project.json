@@ -1,0 +1,31 @@
+{
+  "name": "ocaml-hello",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/ocaml-hello",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune build",
+        "cwd": "apps/ocaml-hello"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune test",
+        "cwd": "apps/ocaml-hello"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune exec bin/main.exe",
+        "cwd": "apps/ocaml-hello"
+      }
+    }
+  },
+  "tags": ["ocaml", "app"],
+  "implicitDependencies": ["ocaml-hello-libs"]
+}

@@ -101,6 +101,25 @@ jobs:
           find . -name "*.xml" -not -path "*/target/*" -exec xmllint --format --output '{}' '{}' \;
           git diff --exit-code
 
+      # Set up OCaml
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: 4.14.x
+          dune-cache: true
+
+      # Install OCaml dependencies
+      - name: Install OCaml dependencies
+        run: |
+          opam install . --deps-only --with-test
+          opam install dune dream yojson re alcotest
+
+      # Format check OCaml files
+      - name: Check OCaml formatting
+        run: |
+          cd libs/ocaml-hello-libs && opam exec -- dune build @fmt --auto-promote
+          cd ../../apps/ocaml-hello && opam exec -- dune build @fmt --auto-promote
+
       # Build and test Java projects
       - name: Build and install Java libraries
         run: |
@@ -114,8 +133,8 @@ jobs:
           mvn clean verify
           cd ../..
 
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
-      # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      - run: |
-          npx nx affected -t lint test build typecheck
+      # Run build, lint, typecheck, and test on affected projects
+      - run: npx nx affected --target=build --parallel=3
+      - run: npx nx affected --target=lint --parallel=3
+      - run: npx nx affected --target=typecheck --parallel=3
+      - run: npx nx affected --target=test --parallel=3

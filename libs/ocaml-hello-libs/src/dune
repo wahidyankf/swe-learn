@@ -1,0 +1,5 @@
+(library
+ (name lib)
+ (public_name ocaml_hello_lib)
+ (modules lib)
+ (libraries unix))

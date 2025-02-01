@@ -1,0 +1,6 @@
+(lang dune 3.8)
+
+(package
+ (name ocaml_hello_lib)
+ (synopsis "Hello world library")
+ (description "A simple hello world library for demonstration"))

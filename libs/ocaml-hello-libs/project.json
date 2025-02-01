@@ -1,0 +1,23 @@
+{
+  "name": "ocaml-hello-libs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ocaml-hello-libs",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune build",
+        "cwd": "libs/ocaml-hello-libs"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune test",
+        "cwd": "libs/ocaml-hello-libs"
+      }
+    }
+  },
+  "tags": ["ocaml", "lib"]
+}

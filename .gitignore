@@ -127,3 +127,32 @@ buildNumber.properties
 
 # SDKMAN
 .sdkman/
+
+# OCaml/dune
+_build/
+*.install
+.merlin
+*.opam
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+
+# ocamlbuild working directory
+_build/
+
+# ocamlbuild targets
+*.byte
+*.native
+
+# oasis generated files
+setup.data
+setup.log
+
+# Dune generated files
+*.install

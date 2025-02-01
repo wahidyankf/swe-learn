@@ -10,5 +10,8 @@ cd apps/go-hello && go fmt ./... && cd ../../
 # Format Java and XML files
 ./scripts/format-java.sh
 
+# Format OCaml files
+./scripts/format-ocaml.sh
+
 # Run lint-staged
 npx lint-staged
