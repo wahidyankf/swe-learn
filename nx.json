@@ -5,7 +5,14 @@
     "production": ["default"],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "6796eac9896a9430b724a3b0",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "test", "lint", "typecheck", "format"]
+      }
+    }
+  },
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
