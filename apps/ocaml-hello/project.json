@@ -24,6 +24,13 @@
         "command": "opam exec -- dune exec bin/main.exe",
         "cwd": "apps/ocaml-hello"
       }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune build @fmt --auto-promote",
+        "cwd": "apps/ocaml-hello"
+      }
     }
   },
   "tags": ["ocaml", "app"],

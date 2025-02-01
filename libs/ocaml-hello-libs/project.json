@@ -17,6 +17,13 @@
         "command": "opam exec -- dune test",
         "cwd": "libs/ocaml-hello-libs"
       }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "opam exec -- dune build @fmt --auto-promote",
+        "cwd": "libs/ocaml-hello-libs"
+      }
     }
   },
   "tags": ["ocaml", "lib"]

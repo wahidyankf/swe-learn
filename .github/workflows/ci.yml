@@ -130,14 +130,12 @@ jobs:
       # Install project OCaml dependencies
       - name: Install project OCaml dependencies
         run: |
-          cd libs/ocaml-hello-libs && opam install . --deps-only --with-test --yes --assume-depexts
-          cd ../../apps/ocaml-hello && opam install . --deps-only --with-test --yes --assume-depexts
+          npx nx affected --target=build --projects=ocaml-hello-libs,ocaml-hello
 
       # Format check OCaml files
       - name: Check OCaml formatting
         run: |
-          cd libs/ocaml-hello-libs && opam exec -- dune build @fmt --auto-promote
-          cd ../../apps/ocaml-hello && opam exec -- dune build @fmt --auto-promote
+          npx nx affected --target=format --projects=ocaml-hello-libs,ocaml-hello
 
       # Build and test Java projects
       - name: Build and install Java libraries
