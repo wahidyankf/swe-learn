@@ -106,15 +106,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y bubblewrap gcc make g++ rsync git m4 unzip pkg-config
+          sudo apt-get install -y musl-tools mercurial
 
-      # Set up OCaml
-      - name: Set up OCaml
-        uses: ocaml/setup-ocaml@v2
-        with:
-          ocaml-compiler: 4.14.x
-          dune-cache: true
-          opam-depext: false
-          opam-disable-sandboxing: true
+      # Download and install OPAM
+      - name: Download and install OPAM
+        run: |
+          wget https://github.com/ocaml/opam/releases/download/2.1.6/opam-2.1.6-x86_64-linux
+          sudo cp opam-2.1.6-x86_64-linux /usr/local/bin/opam
+          sudo chmod a+x /usr/local/bin/opam
 
       # Initialize OPAM
       - name: Initialize OPAM
