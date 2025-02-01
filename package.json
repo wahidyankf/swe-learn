@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "preinstall": "./scripts/check-deps.sh",
+    "preinstall": "node ./scripts/check-deps.js",
     "affected:build": "nx affected --target=build",
     "affected:graph": "nx affected:graph",
     "affected:lint": "nx affected --target=lint",
