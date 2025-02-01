@@ -130,7 +130,7 @@ jobs:
       # Install project OCaml dependencies
       - name: Install project OCaml dependencies
         run: |
-          npx nx affected --target=build --projects=ocaml-hello-libs,ocaml-hello
+          npx nx affected --target=install --projects=ocaml-hello-libs,ocaml-hello
 
       # Format check OCaml files
       - name: Check OCaml formatting
@@ -140,15 +140,11 @@ jobs:
       # Build and test Java projects
       - name: Build and install Java libraries
         run: |
-          cd libs/java-hello-libs
-          mvn clean install
-          cd ../..
+          npx nx affected --target=install --projects=java-hello-libs
 
       - name: Build and test Java applications
         run: |
-          cd apps/java-hello
-          mvn clean verify
-          cd ../..
+          npx nx affected --target=build --projects=java-hello
 
       # Run build, lint, typecheck, and test on affected projects
       - run: npx nx affected --target=build --parallel=3
