@@ -7,7 +7,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm run node-hello:build"
+        "command": "tsc -p apps/node-hello/tsconfig.json"
       },
       "dependsOn": [
         {
@@ -19,13 +19,13 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm run node-hello:dev"
+        "command": "tsx watch apps/node-hello/src/main.ts"
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm run node-hello:start"
+        "command": "node apps/node-hello/dist/main.js"
       }
     },
     "lint": {
