@@ -125,7 +125,7 @@ jobs:
       # Install base OCaml dependencies
       - name: Install base OCaml dependencies
         run: |
-          opam install dune dream yojson re alcotest --yes --assume-depexts
+          opam install dune dream yojson re alcotest ocamlformat --yes --assume-depexts
 
       # Install project OCaml dependencies
       - name: Install project OCaml dependencies
