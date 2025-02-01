@@ -105,7 +105,7 @@ jobs:
       - name: Install OCaml system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y bubblewrap gcc make
+          sudo apt-get install -y bubblewrap gcc make g++ rsync git m4 unzip pkg-config
 
       # Set up OCaml
       - name: Set up OCaml
@@ -113,7 +113,15 @@ jobs:
         with:
           ocaml-compiler: 4.14.x
           dune-cache: true
-          opam-depext-flags: --with-test
+          opam-depext: false
+          opam-disable-sandboxing: true
+
+      # Initialize OPAM
+      - name: Initialize OPAM
+        run: |
+          opam init --bare -ny
+          opam switch create . ocaml-base-compiler.4.14.1 -y
+          eval $(opam env)
 
       # Install base OCaml dependencies
       - name: Install base OCaml dependencies
