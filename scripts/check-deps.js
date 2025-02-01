@@ -2,8 +2,7 @@
 
 import { execSync } from 'child_process';
 import { platform } from 'os';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { join } from 'path';
 
 // Colors for output
 const colors = {
